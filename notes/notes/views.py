@@ -1,4 +1,4 @@
-from . import render
+from django.shortcuts import render
 
 def home(request):
     if request.method == 'POST':
