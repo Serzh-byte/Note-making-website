@@ -1,0 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: 100%;
+    padding-bottom: 70px; /* Adjust as needed to create space for the footer */
+}
