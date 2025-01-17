@@ -1,27 +1,19 @@
 {% extends 'notes/base.html' %}
 {% block title %} Home page {% endblock %}
-
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% block content %}
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Machine Learning</h1>
+        <div class="row g-3"> <!-- Keep row outside the loop -->
+            {% for topic in topics %}
+            <div class="col-md-3"> <!-- Each topic in a column -->
+                <div class="card"> <!-- Card wrapper -->
+                    <div class="card-body">
+                        <h5 class="card-title">{{ topic }}</h5>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Statistics</h1>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Data Science</h1>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Artifical Intelligence</h1>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
