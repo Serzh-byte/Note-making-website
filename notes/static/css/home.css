@@ -1,5 +1,12 @@
-.container {
-    background-color: #f0f0f0; /* Example styling */
-    padding: 20px;
-    border: 1px solid #ccc;
+.card:hover {
+    background-color: #e0f7fa; /* very light blue */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+.welcome {
+    text-align: center;
+    padding: 5px 15px;
+    margin-bottom: 10px;
 }

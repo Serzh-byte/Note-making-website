@@ -1,19 +1,23 @@
 {% extends 'notes/base.html' %}
 {% block title %} Home page {% endblock %}
 {% load static %}
+
+{% block css %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
-    <div class="container">
-        <div class="row g-3"> <!-- Keep row outside the loop -->
-            {% for topic in topics %}
-            <div class="col-md-3"> <!-- Each topic in a column -->
-                <div class="card"> <!-- Card wrapper -->
+    <h1 class="welcome">Welcome to the Notes App!</h1>
+        <div class="row g-3">
+            {% for topic, text in topics_texts %}
+            <div class="col-md-3">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ topic }}</h5>
+                        <p class="card-text">{{ text }}</p>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>
 {% endblock %}
