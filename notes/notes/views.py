@@ -1,13 +1,17 @@
 from django.shortcuts import render
+from .models import Note
+from .forms import NoteForm
 
 def home(request):
-    topics = ['Machine Learning', 'Statistics', 'Data Science', 'AI']
-    texts = ['Intro to Machine Learning', 'Basics of Statistics', 'Overview of Data Science', 'AI Trends']
+    notes = Note.objects.all()
 
-    # Zipping topics and texts to make them a list of tuples or dictionaries
-    topics_texts = zip(topics, texts)  # Creating pairs of topic and text
-
-    return render(request, 'notes/home.html', {'topics_texts': topics_texts})
+    return render(request, 'notes/home.html', {'notes':notes })
 
 def add_note(request):
-    return render(request, 'notes/add_note.html')
+    if request.method == "POST":
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            form.save() # Redirect to the list of notes (adjust URL name as needed)
+    else:
+        form = NoteForm()
+    return render(request, 'notes/add_note.html', {'form': form})

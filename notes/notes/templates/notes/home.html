@@ -9,12 +9,11 @@
 {% block content %}
     <h1 class="welcome">Welcome to the Notes App!</h1>
         <div class="row g-3">
-            {% for topic, text in topics_texts %}
+            {% for note in notes %}
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ topic }}</h5>
-                        <p class="card-text">{{ text }}</p>
+                        <h5 class="card-title">{{ note }}</h5>
                     </div>
                 </div>
             </div>

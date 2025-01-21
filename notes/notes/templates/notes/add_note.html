@@ -10,15 +10,10 @@
 {% block content %}
     <h1>Add a note</h1>
 
-    <form action="">
-        <label for="title">Title</label>
-        <textarea name="title" id="title" placeholder="add a title"></textarea>
-    </form>
-    <form action="">
-        <label for="text">Content</label>
-        <textarea name="content" id="text" placeholder="add the content"></textarea>
-    </form>
-    <form action="">
-        <input type="submit">
+    <!-- Form to handle the note submission -->
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Note">
     </form>
 {% endblock %}
