@@ -8,3 +8,6 @@ def home(request):
     topics_texts = zip(topics, texts)  # Creating pairs of topic and text
 
     return render(request, 'notes/home.html', {'topics_texts': topics_texts})
+
+def add_note(request):
+    return render(request, 'notes/add_note.html')

@@ -1,37 +1,63 @@
-body, html {
-    background-color: #f8f9fa; /* Very light grey background */
-    font-family: 'Roboto', sans-serif;
-}
-
+/* Ensure consistency for navbar items */
 .nav-item {
     display: flex;
+    align-items: center; /* Align items vertically */
     gap: 10px;
-    padding: 5px 10px;
+    padding: 0;
 }
 
 .nav-item .nav-link {
-    color: #495057; /* Darker grey for links */
+    color: #fff; /* Set link color to white */
     transition: color 0.3s ease;
+    padding: 0.5rem 1rem; /* Use rem units for better scaling */
+    border-radius: 0.25rem; /* Add a small border radius */
 }
 
 .nav-item .nav-link:hover {
-    color: #007bff; /* Hover color remains the same */
+    background-color: rgba(255, 255, 255, 0.1); /* Light grey on hover */
+    color: #adb5bd;
 }
 
 .navbar-brand {
-    display: flex;
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Adjust font-size */
     font-weight: bold;
-    color: #fff; /* Keep brand white */
+    color: #fff;
 }
 
 .navbar {
-    padding: 10px 20px;
+    padding: 0.8rem 1rem; /* Adjust padding */
     align-items: center;
-    background-color: #343a40; /* Keep the darker navbar for contrast */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Reduce shadow */
+    background-color: #343a40;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-.container {
-    padding-top: 20px;
+/* Account button alignment */
+.navbar .account-button {
+    color: #fff;
+    background-color: #007bff; /* Blue background */
+    border: none;
+    padding: 0.5rem 1rem; /* Adjust padding */
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none; /* Remove underline from link */
+    display: inline-block; /* To keep the button on one line */
+}
+
+.navbar .account-button:hover {
+    background-color: #0056b3;
+}
+
+/* Align navbar items horizontally */
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push the "Account" button to the right */
+    gap: 0.5rem; /* Add spacing between items */
+}
+
+/* Mobile menu button adjustment */
+.navbar-toggler {
+    border: none; /* remove the border on the toggle button */
 }
