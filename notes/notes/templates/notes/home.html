@@ -12,9 +12,11 @@
             {% for note in notes %}
             <div class="col-md-3">
                 <div class="card">
+                    <a href="{% url 'specific' note.id %}">
                     <div class="card-body">
                         <h5 class="card-title">{{ note }}</h5>
                     </div>
+                    </a>
                 </div>
             </div>
             {% endfor %}

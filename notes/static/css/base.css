@@ -35,10 +35,7 @@
 /* Account button alignment */
 .navbar .account-button {
     color: #fff;
-    background-color: #007bff; /* Blue background */
     border: none;
-    padding: 0.5rem 1rem; /* Adjust padding */
-    border-radius: 0.25rem;
     transition: all 0.3s ease;
     text-align: center;
     text-decoration: none; /* Remove underline from link */

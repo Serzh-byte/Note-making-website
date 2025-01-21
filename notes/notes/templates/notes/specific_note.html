@@ -1,0 +1,14 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/specific_note.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="note-container">
+        <h1>{{ note.title }}</h1>
+        <p class="note-content">{{ note.content }}</p>
+        <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+    </div>
+{% endblock %}

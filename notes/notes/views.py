@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Note
 from .forms import NoteForm
 
@@ -16,3 +16,7 @@ def add_note(request):
     else:
         form = NoteForm()
     return render(request, 'notes/add_note.html', {'form': form})
+
+def specific(request, id):
+    note = get_object_or_404(Note, id=id)
+    return render(request, 'notes/specific_note.html', {'note': note})
