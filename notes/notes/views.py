@@ -40,3 +40,12 @@ def edit_note(request, id):
         form = NoteForm(instance=note)
 
     return render(request, 'notes/edit_note.html', {'form': form, 'note': note}) 
+
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        notes = Note.objects.filter(title__icontains=query)
+        return render(request, 'notes/search_results.html', {'notes': notes, 'query': query})
+    else:
+        notes = Note.objects.all()
+    return render(request, 'notes/home.html', {'notes': notes})
