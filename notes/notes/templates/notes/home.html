@@ -2,20 +2,20 @@
 {% block title %} Home page {% endblock %}
 {% load static %}
 
-{% block css %}
+{% block additional_css %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1 class="welcome">Welcome to the Notes App!</h1>
-        <div class="row g-3">
+    <h1 class="welcome">Welcome to Your Notes!</h1>
+        <div class="row notes-grid">
             {% for note in notes %}
-            <div class="col-md-3">
-                <div class="card">
+            <div class="col-md-4 col-sm-6">
+                <div class="note-card">
                     <a href="{% url 'specific' note.id %}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ note }}</h5>
-                    </div>
+                        <div class="note-card-body">
+                            <h5 class="note-card-title">{{ note }}</h5>
+                        </div>
                     </a>
                 </div>
             </div>

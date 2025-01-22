@@ -1,0 +1,30 @@
+{% extends 'notes/base.html' %}
+{% load static %}
+
+{% block title %}Edit note{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/edit_note.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="note-form-container">
+        <h2 class="form-title">Edit Note</h2>
+        <form method="post" class="edit-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+             </div>
+             <div class="form-group">
+                {{ form.content.label_tag }}
+                {{ form.content }}
+             </div>
+             <div class="button-group">
+                <button type="submit" class="save-button">Save</button>
+                <a href="{% url 'specific' note.id %}" class="cancel-button">Cancel</a>
+             </div>
+
+        </form>
+    </div>
+{% endblock %}

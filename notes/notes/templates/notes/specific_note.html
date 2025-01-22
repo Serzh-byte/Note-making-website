@@ -6,9 +6,19 @@
 {% endblock %}
 
 {% block content %}
-    <div class="note-container">
-        <h1>{{ note.title }}</h1>
-        <p class="note-content">{{ note.content }}</p>
+    <div class="note-detail-container">
+        <h1 class="note-detail-title">{{ note.title }}</h1>
+        <p class="note-detail-content">{{ note.content }}</p>
+
+        <div class="button-group">
         <a href="{% url 'home' %}" class="back-button">Back to Home</a>
+          <form action="{% url 'delete_note' note.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="delete-button">Delete</button>
+          </form>
+          <a href="{% url 'edit_note' note.id %}" class="edit-button">Edit</a>
+        </div>
+
     </div>
+
 {% endblock %}

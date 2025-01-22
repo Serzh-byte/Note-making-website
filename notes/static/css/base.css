@@ -1,60 +1,121 @@
-/* Ensure consistency for navbar items */
-.nav-item {
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f9fa;
+    color: #343a40;
     display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 10px;
-    padding: 0;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.nav-item .nav-link {
-    color: #fff; /* Set link color to white */
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem; /* Use rem units for better scaling */
-    border-radius: 0.25rem; /* Add a small border radius */
-}
-
-.nav-item .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Light grey on hover */
-    color: #adb5bd;
-}
-
-.navbar-brand {
-    font-size: 1.5rem; /* Adjust font-size */
-    font-weight: bold;
-    color: #fff;
+.content-wrapper {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
-    padding: 0.8rem 1rem; /* Adjust padding */
-    align-items: center;
-    background-color: #343a40;
+    background-color: #2c3e50;
+    padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
-/* Account button alignment */
-.navbar .account-button {
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 500;
     color: #fff;
+}
+
+.navbar-toggler {
     border: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    text-decoration: none; /* Remove underline from link */
-    display: inline-block; /* To keep the button on one line */
 }
 
-.navbar .account-button:hover {
-    background-color: #0056b3;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-/* Align navbar items horizontally */
-.navbar .navbar-nav {
+.navbar-nav .nav-item {
+    margin-left: 15px;
     display: flex;
     align-items: center;
-    margin-left: auto; /* Push the "Account" button to the right */
-    gap: 0.5rem; /* Add spacing between items */
 }
 
-/* Mobile menu button adjustment */
-.navbar-toggler {
-    border: none; /* remove the border on the toggle button */
+.navbar-nav .nav-link {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.account-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.account-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+
+.search-input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  margin-right: 5px;
+    font-family: 'Poppins', sans-serif;
+    color: #343a40;
+    font-size: 1rem;
+}
+
+.search-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 15px;
+    }
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+     .search-container {
+        margin-left: 5px; /* Reduce the margin */
+        width: auto; /* Allow the container to shrink */
+    }
+
+    .search-input {
+        width: 100px;
+        padding: 0.4rem;
+    }
+     .search-button {
+      padding: 0.4rem 0.8rem;
+    }
 }

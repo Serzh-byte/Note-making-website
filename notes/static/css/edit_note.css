@@ -1,0 +1,127 @@
+.note-form-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .note-form-container:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  }
+  
+  
+  .form-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+    color: #343a40;
+    font-size: 2.2rem;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    color: #495057;
+    font-size: 1.1rem;
+  }
+  
+  textarea,
+  input[type="text"] {
+    padding: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    color: #343a40;
+    background-color: #f8f9fa;
+  }
+  
+  textarea:focus,
+  input[type="text"]:focus {
+      border-color: #48a5ff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(72, 165, 255, 0.25);
+  }
+  
+  #title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      height: 48px;
+  }
+  
+  #content {
+      height: 180px;
+  }
+  
+  .button-group {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+  }
+  
+  
+  .save-button,
+  .cancel-button {
+      padding: 14px 22px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      text-decoration: none;
+  }
+  
+  .save-button {
+      background-color: #48a5ff;
+      color: white;
+      border: none;
+      cursor: pointer;
+  }
+  
+  .cancel-button {
+      background-color: #e74c3c;
+      color: white;
+  }
+  
+  
+  .save-button:hover {
+    background-color: #3a81c5;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cancel-button:hover {
+    background-color: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  }
+  
+  .save-button:active, .cancel-button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+      .note-form-container {
+          padding: 30px;
+      }
+  }
