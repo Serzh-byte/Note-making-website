@@ -14,11 +14,20 @@
                 <div class="note-card">
                     <a href="{% url 'specific' note.id %}">
                         <div class="note-card-body">
-                            <h5 class="note-card-title">{{ note }}</h5>
+                            <h5 class="note-card-title">{{ note.title }}</h5>
+                            <div class="note-card-preview" id="preview-{{ note.id }}"></div>
                         </div>
                     </a>
                 </div>
             </div>
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                    const converter = new showdown.Converter();
+                    const content = `{{ note.content|escapejs }}`;
+                    const html = converter.makeHtml(content);
+                      document.getElementById('preview-{{ note.id }}').innerHTML = html;
+                  });
+                </script>
             {% endfor %}
         </div>
 {% endblock %}

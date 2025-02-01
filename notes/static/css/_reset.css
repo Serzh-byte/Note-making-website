@@ -1,0 +1,35 @@
+/* _reset.css */
+/* Resetting default browser styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Ensure you have linked 'Poppins' in your base.html */
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh; /* Ensure content stretches to the bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Resetting basic styles */
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, textarea {
+  font-family: inherit; /* Use same font as body */
+  border: none;
+  outline: none; /* Remove default outline */
+}

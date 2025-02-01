@@ -8,8 +8,8 @@
 {% block content %}
     <div class="note-detail-container">
         <h1 class="note-detail-title">{{ note.title }}</h1>
-        <p class="note-detail-content">{{ note.content }}</p>
-
+        <div class="note-detail-content" id="markdown-content">
+        </div>
         <div class="button-group">
         <a href="{% url 'home' %}" class="back-button">Back to Home</a>
           <form action="{% url 'delete_note' note.id %}" method="post">
@@ -20,5 +20,13 @@
         </div>
 
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const converter = new showdown.Converter();
+        const content = `{{ note.content|escapejs }}`;
+        const html = converter.makeHtml(content);
+        document.getElementById('markdown-content').innerHTML = html;
+    });
+</script>
 
 {% endblock %}

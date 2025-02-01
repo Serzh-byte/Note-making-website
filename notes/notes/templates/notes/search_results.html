@@ -1,0 +1,25 @@
+{% extends 'notes/base.html' %}
+{% block title %} Search Results {% endblock %}
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'css/search_results.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="welcome">Search Results</h1>
+    <div class="search-notes-grid">
+            {% if notes %}
+                {% for note in notes %}
+                    <div class="search-note-item">
+                        <a href="{% url 'specific' note.id %}">
+                            <h2>{{ note.title }}</h2>
+                            <p>{{ note.content|truncatechars:200 }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+              <p class="no-results">No notes found matching your search.</p>
+            {% endif %}
+    </div>
+{% endblock %}

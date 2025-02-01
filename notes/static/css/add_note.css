@@ -1,107 +1,138 @@
+/* add_note.css */
+
 .form-container {
-  max-width: 700px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  max-width: 850px; /* Increased max-width */
+  margin: 3rem auto;
+  background: var(--white-color);
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--transition-duration);
+  border: 1px solid var(--border-color);
 }
 
 .form-container:hover {
-box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 .form-title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   font-family: 'Poppins', sans-serif;
-  color: #343a40;
-  font-size: 2.2rem;
+  color: var(--text-color);
+  font-size: var(--font-size-h1);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .note-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+display: flex;
+flex-direction: column;
+gap: 2rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+.title-group {
+display: flex;
+flex-direction: column;
+}
+
+.content-group {
+display: flex;
+flex-direction: column;
 }
 
 label {
-  font-weight: 500;
-  margin-bottom: 8px;
-  font-family: 'Poppins', sans-serif;
-  color: #495057;
-  font-size: 1.1rem;
+font-weight: 500;
+margin-bottom: 0.5rem;
+color: var(--text-color);
+font-size: var(--font-size-base);
+}
+
+.markdown-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+justify-content: flex-start;
+}
+
+.markdown-button {
+padding: 0.8rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: #f8f9fa;
+  color: var(--text-color);
+  cursor: pointer;
+transition: background-color var(--transition-duration);
+font-size: var(--font-size-small);
 }
 
 
+.markdown-button:hover {
+background-color: #e9ecef;
+}
+
 textarea,
 input[type="text"] {
-  padding: 14px;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  font-size: 1.05rem;
-  font-family: 'Poppins', sans-serif;
+padding: 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
   line-height: 1.6;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   width: 100%;
   box-sizing: border-box;
   resize: vertical;
-  color: #343a40;
+  color: var(--text-color);
   background-color: #f8f9fa;
-
 }
 
 textarea:focus,
 input[type="text"]:focus {
-  border-color: #48a5ff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(72, 165, 255, 0.25);
+border-color: var(--primary-color);
+outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(123, 104, 238, 0.25);
 }
 
 #title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  height: 48px;
+  height: 50px;
 }
 
 #content {
-  height: 180px;
+height: 500px; /* Significantly increased height for content */
+  font-size: 1.1rem;
 }
 
 .submit-button {
-  padding: 14px 22px;
-  background-color: #48a5ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  padding: 1.1rem 1.8rem;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-duration), transform 0.2s ease, box-shadow 0.2s ease;
   font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  align-self: flex-start;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .submit-button:hover {
-background-color: #3a81c5;
+  background-color: var(--primary-hover-color);
   transform: translateY(-2px);
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .submit-button:active {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
-
 
 @media (max-width: 768px) {
   .form-container {
-      padding: 30px;
+      padding: 2.5rem;
   }
 }

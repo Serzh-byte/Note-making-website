@@ -48,4 +48,4 @@ def search(request):
         return render(request, 'notes/search_results.html', {'notes': notes, 'query': query})
     else:
         notes = Note.objects.all()
-    return render(request, 'notes/home.html', {'notes': notes})
+    return redirect('home')

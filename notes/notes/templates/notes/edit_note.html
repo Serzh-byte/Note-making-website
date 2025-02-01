@@ -18,7 +18,15 @@
              </div>
              <div class="form-group">
                 {{ form.content.label_tag }}
-                {{ form.content }}
+                <div class="markdown-editor">
+                  <div class="editor-buttons">
+                     <button type="button" class="markdown-button" data-action="bold"><i class="fas fa-bold"></i></button>
+                     <button type="button" class="markdown-button" data-action="italic"><i class="fas fa-italic"></i></button>
+                     <button type="button" class="markdown-button" data-action="heading"><i class="fas fa-heading"></i></button>
+                     <button type="button" class="markdown-button" data-action="list"><i class="fas fa-list-ul"></i></button>
+                   </div>
+                  {{ form.content }}
+                </div>
              </div>
              <div class="button-group">
                 <button type="submit" class="save-button">Save</button>
@@ -27,4 +35,42 @@
 
         </form>
     </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const markdownButtons = document.querySelectorAll('.markdown-button');
+        const contentTextarea = document.querySelector('#id_content');
+
+        markdownButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.getAttribute('data-action');
+                let text = contentTextarea.value;
+                const selectionStart = contentTextarea.selectionStart;
+                const selectionEnd = contentTextarea.selectionEnd;
+                const selectedText = text.substring(selectionStart, selectionEnd);
+                let newText;
+
+                switch (action) {
+                  case 'bold':
+                      newText = text.substring(0,selectionStart) + `**${selectedText}**` + text.substring(selectionEnd);
+                      break;
+                  case 'italic':
+                    newText = text.substring(0,selectionStart) + `*${selectedText}*` + text.substring(selectionEnd);
+                    break;
+                  case 'heading':
+                    newText = text.substring(0,selectionStart) + `# ${selectedText}` + text.substring(selectionEnd);
+                    break;
+                  case 'list':
+                    newText = text.substring(0,selectionStart) + `- ${selectedText}` + text.substring(selectionEnd);
+                      break;
+
+                  default:
+                    newText = text;
+
+                }
+
+                 contentTextarea.value = newText;
+            });
+        });
+    });
+</script>
 {% endblock %}
