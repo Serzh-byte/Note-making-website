@@ -1,17 +1,20 @@
-/* edit_note.css */
+/* Improved Note Editing UI */
+
 .note-form-container {
-  max-width: 850px; /* Increased max-width */
+  max-width: 1000px;
   margin: 3rem auto;
   background: var(--white-color);
   padding: 3rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: box-shadow var(--transition-duration);
-border: 1px solid var(--border-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .note-form-container:hover {
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .form-title {
@@ -20,32 +23,9 @@ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
   font-size: var(--font-size-h1);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.title-group {
-display: flex;
-flex-direction: column;
-}
-
-.content-group {
-display: flex;
-flex-direction: column;
-}
-
-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-  font-size: var(--font-size-base);
-}
-
+/* Markdown Editor Styling */
 .markdown-editor {
   display: flex;
   flex-direction: column;
@@ -55,11 +35,12 @@ label {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
-justify-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .markdown-button {
-padding: 0.8rem 1rem;
+  padding: 0.8rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: #f8f9fa;
@@ -73,19 +54,19 @@ padding: 0.8rem 1rem;
   background-color: #e9ecef;
 }
 
+/* Input and Textarea */
 textarea,
 input[type="text"] {
   padding: 1.2rem;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   font-size: var(--font-size-base);
-  line-height: 1.6;
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   width: 100%;
   box-sizing: border-box;
   resize: vertical;
   color: var(--text-color);
   background-color: #f8f9fa;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 textarea:focus,
@@ -95,17 +76,27 @@ input[type="text"]:focus {
   box-shadow: 0 0 0 0.2rem rgba(123, 104, 238, 0.25);
 }
 
-#title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  height: 50px;
-}
-
+/* Adjustable Height */
 #content {
-  height: 500px; /* Significantly increased height for content */
+  min-height: 200px;
   font-size: 1.1rem;
+  transition: height 0.3s ease-in-out;
 }
 
+/* Live Preview */
+.preview-container {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  min-height: 200px;
+  overflow-y: auto;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+/* Button Group for Save & Cancel */
 .button-group {
   display: flex;
   justify-content: flex-start;
@@ -152,8 +143,41 @@ input[type="text"]:focus {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Floating Submit Button */
+.floating-submit {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: var(--white-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.floating-submit:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Optimization */
 @media (max-width: 768px) {
   .note-form-container {
-      padding: 2.5rem;
+    padding: 2rem;
+  }
+
+  .editor-buttons {
+    flex-wrap: wrap;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .floating-submit {
+    width: 100%;
+    bottom: 10px;
+    right: 10px;
   }
 }

@@ -1,15 +1,17 @@
 {% extends 'notes/base.html' %}
 {% load static %}
 
-{% block title %}Add a note{% endblock %}
+{% block title %}Add a Note{% endblock %}
 
 {% block additional_css %}
     <link rel="stylesheet" href="{% static 'css/add_note.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="form-container">
-        <h1 class="form-title">Add a Note</h1>
+<div class="split-container">
+    <!-- Left: Note Editor -->
+    <div class="editor-container">
+        <h1>Add a Note</h1>
         <form method="post" class="note-form">
             {% csrf_token %}
             <div class="form-group">
@@ -31,43 +33,58 @@
             <button type="submit" class="submit-button">Save Note</button>
         </form>
     </div>
+
+    <!-- Right: Markdown Preview -->
+    <div class="preview-container"></div>
+</div>
+
+<!-- Include Marked.js -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const markdownButtons = document.querySelectorAll('.markdown-button');
-      const contentTextarea = document.querySelector('#id_content');
+document.addEventListener('DOMContentLoaded', function() {
+    const markdownButtons = document.querySelectorAll('.markdown-button');
+    const contentTextarea = document.querySelector('#id_content');
+    const previewContainer = document.querySelector('.preview-container');
 
-      markdownButtons.forEach(button => {
-          button.addEventListener('click', function() {
-              const action = this.getAttribute('data-action');
-              let text = contentTextarea.value;
-              const selectionStart = contentTextarea.selectionStart;
-              const selectionEnd = contentTextarea.selectionEnd;
-              const selectedText = text.substring(selectionStart, selectionEnd);
-              let newText;
+    // Apply Markdown Formatting
+    markdownButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.getAttribute('data-action');
+            let text = contentTextarea.value;
+            const selectionStart = contentTextarea.selectionStart;
+            const selectionEnd = contentTextarea.selectionEnd;
+            const selectedText = text.substring(selectionStart, selectionEnd);
+            let newText;
 
-              switch (action) {
+            switch (action) {
                 case 'bold':
-                    newText = text.substring(0,selectionStart) + `**${selectedText}**` + text.substring(selectionEnd);
+                    newText = `**${selectedText}**`;
                     break;
                 case 'italic':
-                  newText = text.substring(0,selectionStart) + `*${selectedText}*` + text.substring(selectionEnd);
-                  break;
-                case 'heading':
-                  newText = text.substring(0,selectionStart) + `# ${selectedText}` + text.substring(selectionEnd);
-                  break;
-                case 'list':
-                  newText = text.substring(0,selectionStart) + `- ${selectedText}` + text.substring(selectionEnd);
+                    newText = `*${selectedText}*`;
                     break;
-
+                case 'heading':
+                    newText = `# ${selectedText}`;
+                    break;
+                case 'list':
+                    newText = `- ${selectedText}`;
+                    break;
                 default:
-                  newText = text;
+                    newText = selectedText;
+            }
 
-              }
+            contentTextarea.setRangeText(newText, selectionStart, selectionEnd, 'end');
+            updatePreview();
+        });
+    });
 
-               contentTextarea.value = newText;
-          });
-      });
-  });
+    // Live Markdown Preview
+    function updatePreview() {
+        previewContainer.innerHTML = marked.parse(contentTextarea.value);
+    }
+
+    contentTextarea.addEventListener('input', updatePreview);
+});
 </script>
-
 {% endblock %}
